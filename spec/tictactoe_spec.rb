@@ -12,18 +12,26 @@ class TicTacToe
   def play(position)
     raise StandardError, "Can't play on already played position" if @board[position]
     @board[position] = @current_player
-     if @current_player == 'X'
-       @current_player = 'O'
-     else
-       @current_player = 'X'
-     end
+    switch_player
   end
 
   def winner
     if @board[0] == 'O' && @board[1] == 'O' && @board[1] == 'O' && @board[2] == 'O'
       return 'O'
     end
-    'X'
+    if @board[0] == 'X' && @board[1] == 'X' && @board[1] == 'X' && @board[2] == 'X'
+      return 'X'
+    end
+  end
+
+  private
+
+  def switch_player
+    if @current_player == 'X'
+      @current_player = 'O'
+    else
+      @current_player = 'X'
+    end
   end
 end
 
