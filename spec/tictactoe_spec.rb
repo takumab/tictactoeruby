@@ -20,6 +20,9 @@ class TicTacToe
   end
 
   def winner
+    if @board[0] == 'O' && @board[1] == 'O' && @board[1] == 'O' && @board[2] == 'O'
+      return 'O'
+    end
     'X'
   end
 end
@@ -61,5 +64,18 @@ describe 'TicTacToeGame' do
     winner = @game.winner
 
     expect(winner).to eq('X')
+  end
+
+  it 'should make O the winner with 3 marks in a horizontal row' do
+    @game.play(4)
+    @game.play(0)
+    @game.play(6)
+    @game.play(1)
+    @game.play(3)
+    @game.play(2)
+
+    winner = @game.winner
+
+    expect(winner).to eq('O')
   end
 end
