@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+module Position
+  TOPLEFT = 0
+  TOPMIDDLE = 1
+  TOPRIGHT = 2
+end
 
 class TicTacToe
   attr_reader :current_player
@@ -8,7 +13,7 @@ class TicTacToe
     @current_player = 'X'
     @board = board
     @array_of_winning_lines = [
-      [0, 1, 2],
+      [Position::TOPLEFT, Position::TOPMIDDLE, Position::TOPRIGHT],
     ]
   end
 
@@ -20,10 +25,10 @@ class TicTacToe
 
   def winner
     @array_of_winning_lines.each do |winning_line|
-      if (@board[winning_line[0]] == @board[0]) &&
-        (@board[winning_line[1]] == @board[1]) &&
-        (@board[winning_line[1]] == @board[1]) &&
-        (@board[winning_line[2]] == @board[2])
+      if (@board[winning_line[0]] == @board[Position::TOPLEFT]) &&
+        (@board[winning_line[1]] == @board[Position::TOPMIDDLE]) &&
+        (@board[winning_line[1]] == @board[Position::TOPMIDDLE]) &&
+        (@board[winning_line[2]] == @board[Position::TOPRIGHT])
         return @board[winning_line[0]]
       end
     end
