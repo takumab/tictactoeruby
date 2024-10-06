@@ -45,10 +45,10 @@ class TicTacToe
   private
 
   def switch_player
-    @current_player = if @current_player == 'X'
-                        'O'
+    @current_player = if @current_player == Player::X
+                        Player::O
                       else
-                        'X'
+                        Player::X
                       end
   end
 end
@@ -63,7 +63,7 @@ describe 'TicTacToeGame' do
     it 'X should make the first move' do
       current_player = @game.current_player
 
-      expect(current_player).to eq('X')
+      expect(current_player).to eq(Player::X)
     end
   end
 
@@ -73,7 +73,7 @@ describe 'TicTacToeGame' do
 
     current_player = @game.current_player
 
-    expect(current_player).to eq('X')
+    expect(current_player).to eq(Player::X)
   end
   it 'should not allow players to play on already played squares' do
     @game.play(0)
