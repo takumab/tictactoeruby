@@ -17,12 +17,13 @@ class TicTacToe
     @board = board
     @array_of_winning_lines = [
       [Position::TOPLEFT, Position::TOPMIDDLE, Position::TOPRIGHT],
-      [Position::CENTERLEFT, Position::CENTER, Position::CENTERRIGHT],
+      [Position::CENTERLEFT, Position::CENTER, Position::CENTERRIGHT]
     ]
   end
 
   def play(position)
     raise StandardError, "Can't play on already played position" unless @board[position].nil?
+
     @board[position] = @current_player
     switch_player
   end
@@ -30,7 +31,7 @@ class TicTacToe
   def winner
     @array_of_winning_lines.each do |winning_line|
       if (@board[winning_line[0]] == @board[winning_line[1]]) &&
-        (@board[winning_line[1]] == @board[winning_line[2]])
+         (@board[winning_line[1]] == @board[winning_line[2]])
         return @board[winning_line[0]]
       end
     end
@@ -39,11 +40,11 @@ class TicTacToe
   private
 
   def switch_player
-    if @current_player == 'X'
-      @current_player = 'O'
-    else
-      @current_player = 'X'
-    end
+    @current_player = if @current_player == 'X'
+                        'O'
+                      else
+                        'X'
+                      end
   end
 end
 
@@ -51,6 +52,7 @@ describe 'TicTacToeGame' do
   before :each do
     @game = TicTacToe.new
   end
+
 
   context 'when game starts' do
     it 'X should make the first move' do
