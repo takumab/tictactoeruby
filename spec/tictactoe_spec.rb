@@ -7,6 +7,9 @@ class TicTacToe
   def initialize(board = [])
     @current_player = 'X'
     @board = board
+    @array_of_winning_lines = [
+      [0, 1, 2],
+    ]
   end
 
   def play(position)
@@ -16,11 +19,13 @@ class TicTacToe
   end
 
   def winner
-    if @board[0] == 'O' && @board[1] == 'O' && @board[1] == 'O' && @board[2] == 'O'
-      return 'O'
-    end
-    if @board[0] == 'X' && @board[1] == 'X' && @board[1] == 'X' && @board[2] == 'X'
-      return 'X'
+    @array_of_winning_lines.each do |winning_line|
+      if (@board[winning_line[0]] == @board[0]) &&
+        (@board[winning_line[1]] == @board[1]) &&
+        (@board[winning_line[1]] == @board[1]) &&
+        (@board[winning_line[2]] == @board[2])
+        return @board[winning_line[0]]
+      end
     end
   end
 
