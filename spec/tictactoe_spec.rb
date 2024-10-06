@@ -27,8 +27,7 @@ class TicTacToe
   end
 
   def play(position)
-    raise StandardError, "Can't play on already played position" unless @board[position].nil?
-
+    is_position_taken?(position)
     @board[position] = @current_player
     switch_player
   end
@@ -50,6 +49,10 @@ class TicTacToe
                       else
                         Player::X
                       end
+  end
+
+  def is_position_taken?(position)
+    raise StandardError, "Can't play on already played position" unless @board[position].nil?
   end
 end
 
