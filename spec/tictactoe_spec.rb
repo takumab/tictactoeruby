@@ -18,7 +18,7 @@ class TicTacToe
   end
 
   def play(position)
-    raise StandardError, "Can't play on already played position" if @board[position]
+    raise StandardError, "Can't play on already played position" unless @board[position].nil?
     @board[position] = @current_player
     switch_player
   end
