@@ -9,11 +9,16 @@ module Position
   CENTERRIGHT = 5
 end
 
+module Player
+  X = 'X'
+  O = 'O'
+end
+
 class TicTacToe
   attr_reader :current_player
 
   def initialize(board = [])
-    @current_player = 'X'
+    @current_player = Player::X
     @board = board
     @array_of_winning_lines = [
       [Position::TOPLEFT, Position::TOPMIDDLE, Position::TOPRIGHT],
