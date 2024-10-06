@@ -90,7 +90,7 @@ describe 'TicTacToeGame' do
 
     winner = @game.winner
 
-    expect(winner).to eq('X')
+    expect(winner).to eq(Player::X)
   end
 
   it 'should make O the winner with 3 marks in a horizontal row' do
@@ -103,7 +103,7 @@ describe 'TicTacToeGame' do
 
     winner = @game.winner
 
-    expect(winner).to eq('O')
+    expect(winner).to eq(Player::O)
   end
 
   it 'should make X the winner with 3 marks in second horizontal row' do
@@ -115,7 +115,7 @@ describe 'TicTacToeGame' do
 
     winner = @game.winner
 
-    expect(winner).to eq('X')
+    expect(winner).to eq(Player::X)
   end
 
   it 'should make O the winner with 3 marks in second horizontal row' do
@@ -128,6 +128,6 @@ describe 'TicTacToeGame' do
 
     winner = @game.winner
 
-    expect(winner).to eq('O')
+    expect(winner).to eq(Player::O)
   end
 end
