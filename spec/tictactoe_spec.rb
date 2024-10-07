@@ -33,12 +33,14 @@ class TicTacToe
   end
 
   def winner
+    winner = ''
     @array_of_winning_lines.each do |winning_line|
       if (@board[winning_line[0]] == @board[winning_line[1]]) &&
          (@board[winning_line[1]] == @board[winning_line[2]])
-        return @board[winning_line[0]]
+        winner = @board[winning_line[0]]
       end
     end
+    winner
   end
 
   private
