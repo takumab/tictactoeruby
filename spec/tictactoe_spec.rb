@@ -7,6 +7,9 @@ module Position
   CENTERLEFT = 3
   CENTER = 4
   CENTERRIGHT = 5
+  BOTTOMLEFT = 6
+  BOTTOMMIDDLE = 7
+  BOTTOMRIGHT = 8
 end
 
 module Player
@@ -22,7 +25,8 @@ class TicTacToe
     @board = board
     @array_of_winning_lines = [
       [Position::TOPLEFT, Position::TOPMIDDLE, Position::TOPRIGHT],
-      [Position::CENTERLEFT, Position::CENTER, Position::CENTERRIGHT]
+      [Position::CENTERLEFT, Position::CENTER, Position::CENTERRIGHT],
+      [Position::BOTTOMLEFT, Position::BOTTOMMIDDLE, Position::BOTTOMRIGHT]
     ]
   end
 
@@ -33,14 +37,12 @@ class TicTacToe
   end
 
   def winner
-    winner = ''
     @array_of_winning_lines.each do |winning_line|
       if (@board[winning_line[0]] == @board[winning_line[1]]) &&
          (@board[winning_line[1]] == @board[winning_line[2]])
-        winner = @board[winning_line[0]]
+        return @board[winning_line[0]]
       end
     end
-    winner
   end
 
   private
@@ -134,5 +136,17 @@ describe 'TicTacToeGame' do
     winner = @game.winner
 
     expect(winner).to eq(Player::O)
+  end
+
+  it 'should make X the winner with 3 marks in third horizontal row' do
+    @game.play(6)
+    @game.play(0)
+    @game.play(7)
+    @game.play(4)
+    @game.play(8)
+
+    winner = @game.winner
+
+    expect(winner).to eq(Player::X)
   end
 end
