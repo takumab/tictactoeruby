@@ -149,4 +149,17 @@ describe 'TicTacToeGame' do
 
     expect(winner).to eq(Player::X)
   end
+
+  it 'should make O the winner with 3 marks in third horizontal row' do
+    @game.play(0)
+    @game.play(6)
+    @game.play(4)
+    @game.play(7)
+    @game.play(2)
+    @game.play(8)
+
+    winner = @game.winner
+
+    expect(winner).to eq(Player::O)
+  end
 end
